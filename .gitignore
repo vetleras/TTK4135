@@ -1,4 +1,5 @@
-*.slx*
+*.slxc
+*.slx.*
 slprj
 helicopter_quarc_win64
 *.rt-win64
