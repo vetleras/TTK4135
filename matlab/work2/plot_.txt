@@ -1,0 +1,13 @@
+1.mat Q=1
+01.mat Q=0.1
+10.mat Q=10
+
+bruker offset 5.8 deg på pådrag
+
+mux-rekkefølge
+travel
+travel rate
+pitch
+pitch rate
+elevation
+elevatioin rate
