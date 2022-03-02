@@ -3,7 +3,7 @@
 % Updated spring 2018, Andreas L. Flåten
 
 %% Initialization and model definition
-init06; % Change this to the init file corresponding to your helicopter
+init03; % Change this to the init file corresponding to your helicopter
 
 %% Lab 2
 A_c = [0 1 0 0;
@@ -53,13 +53,21 @@ vub(N*mx+M*mu)  = 0;                    % We want the last input to be zero
 
 % Generate the matrix Q and the vector c (objecitve function weights in the QP problem) 
 Q1 = zeros(mx,mx);
-Q1(1,1) = 10;                            % Weight on state x1
+Q1(1,1) = 2;                            % Weight on state x1
 Q1(2,2) = 0;                            % Weight on state x2
 Q1(3,3) = 0;                            % Weight on state x3
 Q1(4,4) = 0;                            % Weight on state x4
-P1 = 0;                                % Weight on input
-Q = gen_q(Q1,P1,N,M);                                  % Generate Q, hint: gen_q
+
+%testing, bruker ikke offset 5.8 grader
+P1 = 0.1;  %test 1
+P1 = 1;  %test 2
+P1 = 10;  %test 3
+
+Q = gen_q(Q1,P1,N,M);                   % Generate Q, hint: gen_q
 c = z;                                  % Generate c, this is the linear constant term in the QP
+
+
+
 
 %% Generate system matrixes for linear model
 Aeq = gen_aeq(A1,B1,N,mx,mu);             % Generate A, hint: gen_aeq
@@ -98,7 +106,7 @@ x1  = [pi*unit_padding; x1; zero_padding];
 x2  = [zero_padding; x2; zero_padding];
 x3  = [zero_padding; x3; zero_padding];
 x4  = [zero_padding; x4; zero_padding];
-
+%{
 %% Plotting
 figure(2)
 subplot(511)
@@ -116,3 +124,4 @@ ylabel('p')
 subplot(515)
 plot(t,x4,'m',t,x4','mo'),grid
 xlabel('tid (s)'),ylabel('pdot')
+%}
